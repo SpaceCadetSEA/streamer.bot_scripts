@@ -1,6 +1,12 @@
+using Streamer.bot.Plugin.Interface;
+using Streamer.bot.Plugin.Interface.Enums;
+using Streamer.bot.Plugin.Interface.Model;
+using Streamer.bot.Common.Events;
 using System;
 
-public class CPHInline
+
+// Must update to CPHInline when porting over to Streamer.bot C# sub-action
+public class CPHInlineQuotes : CPHInlineBase
 {
     public bool Execute()
     {
