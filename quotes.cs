@@ -5,7 +5,7 @@ using Streamer.bot.Common.Events;
 using System;
 
 
-// Must update to CPHInline when porting over to Streamer.bot C# sub-action
+// Must update class name to CPHInline when porting over to Streamer.bot C# sub-action
 public class CPHInlineQuotes : CPHInlineBase
 {
     public bool Execute()
@@ -72,3 +72,9 @@ public class QuoteData
     public string Author { get; set; }
     public DateTime Timestamp { get; set; }
 }
+
+/**
+    1. read quotes from JSON...
+    2. save into global variable for streamer.bot
+    3. read global variable in a separate process.
+*/ 
