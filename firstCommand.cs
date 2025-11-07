@@ -12,14 +12,17 @@ public class CPHInline : CPHInlineBase
         {
             CPH.SendMessage("Top 5 not found!");
         }
-        CPH.SendMessage("🏆 MO and Marie's favorites 🏆:");
-        for (int i = 0; i < topUsers.Count; i++)
+        else
         {
-            int rank = i + 1;
-            KeyValuePair<string, int> pair = topUsers[i];
-            string userName = pair.Key;
-            int firstCount = pair.Value;
-            CPH.SendMessage($"#{rank}) {userName} - {firstCount}");
+            CPH.SendMessage("🏆 MO and Marie's favorites 🏆:");
+            for (int i = 0; i < topUsers.Count; i++)
+            {
+                int rank = i + 1;
+                KeyValuePair<string, int> pair = topUsers[i];
+                string userName = pair.Key;
+                int firstCount = pair.Value;
+                CPH.SendMessage($"#{rank}) {userName} - {firstCount}");
+            }
         }
         return true;
     }
