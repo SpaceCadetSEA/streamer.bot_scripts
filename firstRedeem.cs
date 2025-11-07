@@ -1,10 +1,5 @@
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using Streamer.bot.Common.Events;
 using Streamer.bot.Plugin.Interface;
-using Streamer.bot.Plugin.Interface.Enums;
-using Streamer.bot.Plugin.Interface.Model;
 
 
 // Must update class name to CPHInline when porting over to Streamer.bot C# sub-action
