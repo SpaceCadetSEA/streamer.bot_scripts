@@ -13,10 +13,7 @@ public class CPHFirstUsers : CPHInlineBase
         // CPH.TryGetArg("global_viewerFirstCount", out Dictionary<string, int> viewerFirstCount);
         Dictionary<string, int> viewerFirstCount = CPH.GetGlobalVar<Dictionary<string, int>>("global_viewerFirstCount");
         // try to add user to counter
-        if (viewerFirstCount == null)
-        {
-            viewerFirstCount = new Dictionary<string, int>();
-        }
+        viewerFirstCount ??= new Dictionary<string, int>();
         // Overwrite existing userCounter (first redeem) for user
         viewerFirstCount[userName] = userCounter;
         CPH.SetGlobalVar("global_viewerFirstCount", viewerFirstCount);

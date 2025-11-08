@@ -14,7 +14,7 @@ public class CPHInline : CPHInlineBase
         }
         else
         {
-            CPH.SendMessage("🏆 MO and Marie's favorites 🏆:");
+            CPH.SendMessage("🏆 MO and Marie's favorites 🏆");
             for (int i = 0; i < topUsers.Count; i++)
             {
                 int rank = i + 1;
