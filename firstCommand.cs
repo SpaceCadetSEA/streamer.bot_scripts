@@ -3,7 +3,7 @@ using Streamer.bot.Plugin.Interface;
 
 
 // Must update class name to CPHInline when porting over to Streamer.bot C# sub-action
-public class CPHInline : CPHInlineBase
+public class CPHInlineFirst : CPHInlineBase
 {
     public bool Execute()
     {

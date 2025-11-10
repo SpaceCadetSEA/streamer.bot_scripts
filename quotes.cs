@@ -15,7 +15,6 @@ public class CPHInlineQuotes : CPHInlineBase
         CPH.TryGetArg("rawInput", out string quoteText);
 
         // Get current game from Twitch
-        string currentGame = CPH.TwitchGetGameName();
 
         // Alternative: Get from user info
         // var userInfo = CPH.TwitchGetExtendedUserInfoById(CPH.TwitchGetBroadcastUserId());
@@ -40,20 +39,18 @@ public class CPHInlineQuotes : CPHInlineBase
 
         // Get existing quotes list or create new one
         string quotesJson = CPH.GetGlobalVar<string>("allQuotes", true) ?? "[]";
-        var quotes = System.Text.Json.JsonSerializer.Deserialize<List<QuoteData>>(quotesJson) ?? new List<QuoteData>();
 
         // Add new quote
         quotes.Add(new QuoteData
         {
             Id = quotes.Count + 1,
-            Text = quoteText,
-            Game = currentGame,
-            Author = author,
+            Quote = quoteText,
+            GameName = currentGame,
+            User = author,
             Timestamp = DateTime.Now
         });
 
         // Save back to global variable
-        string updatedJson = System.Text.Json.JsonSerializer.Serialize(quotes);
         CPH.SetGlobalVar("allQuotes", updatedJson, true);
 
         // Send confirmation to chat
@@ -62,19 +59,3 @@ public class CPHInlineQuotes : CPHInlineBase
         return true;
     }
 }
-
-// Helper class for quote data
-public class QuoteData
-{
-    public int Id { get; set; }
-    public string Text { get; set; }
-    public string Game { get; set; }
-    public string Author { get; set; }
-    public DateTime Timestamp { get; set; }
-}
-
-/**
-    1. read quotes from JSON...
-    2. save into global variable for streamer.bot
-    3. read global variable in a separate process.
-*/ 
