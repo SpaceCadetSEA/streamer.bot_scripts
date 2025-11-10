@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Streamer.bot.Plugin.Interface;
@@ -9,8 +10,9 @@ public class CPHInlineReadQuote : CPHInlineBase
 {
     public bool Execute()
     {
-        // Get the quote text from chat command arguments
-        List<QuoteData> quoteBook = CPH.GetGlobalVar<List<QuoteData>>("global_quoteBook");
+        // Read global_quoteBook
+        // TODO: I'm unsure if this will be deserialized or if I need to manually deserialize.
+        List<QuoteEntry> quoteBook = CPH.GetGlobalVar<List<QuoteEntry>>("global_quoteBook");
         if (quoteBook == null)
         {
             CPH.SendMessage("Quotes are unavailable.");
@@ -18,7 +20,6 @@ public class CPHInlineReadQuote : CPHInlineBase
         }
         int quoteIndex = GetQuoteIndex(quoteBook.Count);
         QuoteData quote = quoteBook[quoteIndex];
-        CPH.SendMessage($"#{quoteIndex + 1} | {quote.Quote}");
         return true;
     }
 
