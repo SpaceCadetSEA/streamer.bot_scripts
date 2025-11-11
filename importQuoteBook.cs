@@ -30,28 +30,3 @@ public class CPHInline : CPHInlineBase
         return true;
     }
 }
-
-/*
-    In order to use QuoteEntry, you must save your quotes as a list of .json
-    objects with in the following fields: quoteId, quote, game, date.
-*/ 
-public class QuoteEntry
-{
-    public int QuoteId;
-    public string Quote;
-    public string Game;
-    public DateTime Date;
-
-    public QuoteEntry(int quoteId, string quote, string game, DateTime date)
-    {
-        QuoteId = quoteId;
-        Quote = quote;
-        Game = game;
-        Date = date;
-    }
-
-    public override string ToString()
-    {
-        return $"Quote #{QuoteId}: \"{Quote}\" [{Game}] [{Date.ToString("MM/dd/yyyy")}]";
-    }
-}
