@@ -6,6 +6,34 @@ using System.Linq;
 using Streamer.bot.Plugin.Interface;
 
 
+/*
+Current flow:
+    1. export from MIU
+    2. run python script to convert .txt file to JSON
+    3. run THIS file, importQuoteBook.cs, in Streamer.bot
+    4. Saves quotes as global variable, string.
+    5. Need to serialize and deserialize each time
+
+New flow:
+    1. export from MIU
+    2. custom QuoteEntry class
+    3. use sub-actions read random line from file or read line from file
+    4. KEEP the Quotes.txt from MIU
+        a. all random quote reads:
+            i. read a random line from Quotes.txt
+            ii. convert to QuoteEntry object
+            iii. sendMessage with QuoteEntry.ToString()
+        b. direct quote:
+            i. read specific line from Quotes.txt
+            ii. convert to QuoteEntry object
+            iii. sendMessage with QuoteEntry.ToString()
+    5. ADDING new quotes
+        a. parse rawInput convert to QuoteEntry
+        b. write (append) to Quotes.txt tab separated 
+            # \t Quote \t Game \t Date/Time
+
+*/ 
+
 public class CPHInline : CPHInlineBase
 {
     public bool Execute()
