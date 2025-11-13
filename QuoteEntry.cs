@@ -1,6 +1,20 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
+
+/**
+    {
+      "timestamp": "2025-11-09T21:25:54.9211552-08:00",
+      "id": 1,
+      "userId": "531894843",
+      "user": "SpaceCadetSEA",
+      "platform": "twitch",
+      "gameName": "SILENT HILL ƒ",
+      "quote": "this is another test"
+    },
+*/
+
 
 namespace StreamerBotQuotes
 {
@@ -36,6 +50,19 @@ namespace StreamerBotQuotes
         public string ToQuoteTextFile()
         {
             return $"{QuoteId}\t{Quote}\t{Game}\t{Date}";
+        }
+
+        public Dictionary<string, dynamic> ToJsonObject()
+        {
+            return new Dictionary<string, dynamic>{
+                { "timestamp", $"{Date:YYYY-MM-DDTHH:mm:ss.sss±HH:mm}" },
+                { "id", QuoteId },
+                { "userId", "" },
+                { "user", "" },
+                { "platform", "twitch"},
+                { "gameName", $"{Game}"},
+                { "quote", $"{quote}"}
+            };
         }
     }
 }
